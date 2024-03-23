@@ -1,23 +1,16 @@
-import clsx from "clsx";
-import * as s from "./page.css";
+"use client";
+
+import { useEffect, useState } from "react";
+import { GetSpacesApiRequest } from "./action";
 
 export default function Home() {
-    return (
-        <main>
-            <div className={clsx(s.form_wrapper)}>
-                <form>
-                    <h2 className={clsx(s.form_title)}>Sign up with email</h2>
-                    <span>
-                        <p>Email</p>
-                        <input type="email" name="email" />
-                    </span>
-                    <span>
-                        <p>Password</p>
-                        <input type="password" name="password" />
-                    </span>
-                    <button className={clsx(s.form_button)}>submit</button>
-                </form>
-            </div>
-        </main>
-    );
+    const [spaces, setSpaces] = useState<string[]>([]);
+    useEffect(() => {
+        const getspaces = async () => {
+            const data: string[] | string = await GetSpacesApiRequest();
+            setSpaces(data as unknown as string[]);
+        };
+        getspaces();
+    }, []);
+    return <main></main>;
 }
