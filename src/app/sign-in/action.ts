@@ -19,12 +19,8 @@ export async function SignInApiRequest(email: string, password: string) {
 
         cookies().set("token", data, { httpOnly: true, secure: true });
 
-        if (data === "success") {
-            return "success";
-        } else if (data === "already exists") {
-            return "already exists";
-        }
+        return "success";
     } else {
-        throw new Error("Failed to sign up");
+        return "err"
     }
 }

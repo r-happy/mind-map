@@ -6,7 +6,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { SignInApiRequest } from "./action";
 
-
 export default function SignIn() {
     const [email, setEmail] = useState<string>("");
     const [password, setPassword] = useState<string>("");
@@ -44,6 +43,9 @@ export default function SignIn() {
                                     email,
                                     password
                                 );
+                                if (res === "success") {
+                                    router.push("/");
+                                }
                             }}
                         >
                             submit

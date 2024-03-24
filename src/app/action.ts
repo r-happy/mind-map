@@ -11,8 +11,6 @@ export async function GetSpacesApiRequest() {
             cookie,
         },
     });
-    console.log(res.headers);
-
     if (res.ok) {
         const data = await res.text();
 
